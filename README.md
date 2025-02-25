@@ -17,24 +17,11 @@ A simple and interactive desktop application built with **PyQt5** that allows us
 
 ---
 
-## Table of Contents
-
-- [Features](#features)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-- [How It Works](#how-it-works)
-- [Future Improvements](#future-improvements)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
-
----
-
 ## Features
 
 - Open and display images in **PNG, JPG, BMP, GIF, and XPM** formats.
 - Maintain the original aspect ratio while scaling images to fit the window.
-- Instantly **invert image colors** with a single button click.
+- **Inverts image colors** with a single button click.
 - Toggle between the **original** and **inverted** views seamlessly.
 
 ---
@@ -96,12 +83,6 @@ This project can be enhanced with:
 - **Zoom and pan functionality** for better image exploration.
 - **Save feature** to export modified images.
 - **A more refined user interface** with menus and keyboard shortcuts.
-
----
-
-## License
-
-This project is licensed under the **MIT License**. See the `LICENSE` file for details.
 
 ---
 
