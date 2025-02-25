@@ -1,4 +1,3 @@
-
 <h1 align="center">Image Viewer & Inverter</h1>
 
 <div align="center">
@@ -7,6 +6,11 @@
 ![Status](https://img.shields.io/badge/status-completed-green?style=for-the-badge)
 ![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)
 
+</div>
+
+<div align="center">
+    <img src="./demo1.png" alt="Before Inversion" width="500">
+    <img src="./demo2.png" alt="After Inversion" width="500">
 </div>
 
 A simple and interactive desktop application built with **PyQt5** that allows users to **view** and **invert** images with a single click.
@@ -81,7 +85,7 @@ The program consists of a **simple graphical interface** built with PyQt5:
 ### **Color Inversion Process:**
 1. The image is loaded into memory.
 2. Each pixel's **red, green, and blue (RGB)** values are inverted.
-3. The modified image is displayed instantly.
+3. The modified image is displayed.
 
 ---
 
