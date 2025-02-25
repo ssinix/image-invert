@@ -1,3 +1,4 @@
+
 <h1 align="center">Image Viewer & Inverter</h1>
 
 <div align="center">
@@ -8,75 +9,98 @@
 
 </div>
 
-A simple desktop application built with PyQt5 that allows users to view and invert images.
+A simple and interactive desktop application built with **PyQt5** that allows users to **view** and **invert** images with a single click.
+
+---
+
+## Table of Contents
+
+- [Features](#features)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+- [How It Works](#how-it-works)
+- [Future Improvements](#future-improvements)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
+
+---
 
 ## Features
 
-- Open and display common image formats (PNG, JPG, BMP, GIF, XPM)
-- View images at a scaled size while maintaining aspect ratio
-- Invert image colors with a single click
-- Toggle between original and inverted views
+- Open and display images in **PNG, JPG, BMP, GIF, and XPM** formats.
+- Maintain the original aspect ratio while scaling images to fit the window.
+- Instantly **invert image colors** with a single button click.
+- Toggle between the **original** and **inverted** views seamlessly.
+
+---
 
 ## Requirements
 
-- Python 3.6+
-- PyQt5
+Ensure you have the following installed:
+
+- **Python 3.6+**
+- **PyQt5** (for the graphical interface)
+
+---
 
 ## Installation
 
-1. Ensure you have Python installed on your system.
-2. Install the required dependencies:
+1. Install Python if you haven't already ([Download Python](https://www.python.org/downloads/)).
+2. Open a terminal and install the required dependency:
+   
+   ```bash
+   pip install PyQt5
+   ```
 
-```bash
-pip install PyQt5
-```
+---
 
 ## Usage
 
-Run the application by executing the main script:
+To launch the application, simply run:
 
 ```bash
 python image_viewer.py
 ```
 
-### Instructions:
+### **Instructions:**
+1. Click **"Choose Image"** to open a file dialog.
+2. Select an image from your files.
+3. Click **"Invert Image"** to switch between the original and inverted versions.
 
-1. Click the "Choose Image" button to open a file dialog.
-2. Select an image file (supported formats: PNG, JPG, BMP, GIF, XPM).
-3. Once the image is loaded, click the "Invert Image" button to toggle between the original and inverted views.
-
-## Development History
-
-This project was developed in two phases:
-1. Initial implementation of a basic image viewer (image_viewer.py) to test image loading functionality.
-2. Extended implementation (image_reverse.py) to add image inversion capabilities.
+---
 
 ## How It Works
 
-The application uses PyQt5 to create a simple GUI with the following components:
+The program consists of a **simple graphical interface** built with PyQt5:
 
-- QWidget as the main window
-- QLabel to display the image
-- QPushButton widgets for interaction
-- QFileDialog for opening image files
+- A **window** that displays the selected image.
+- A **button** to load an image from your files.
+- Another **button** to apply color inversion.
 
-The image inversion works by:
-1. Converting the QPixmap to a QImage
-2. Accessing each pixel in the image
-3. Inverting the RGB values (subtracting each value from 255)
-4. Converting back to a QPixmap for display
+### **Color Inversion Process:**
+1. The image is loaded into memory.
+2. Each pixel's **red, green, and blue (RGB)** values are inverted.
+3. The modified image is displayed instantly.
+
+---
 
 ## Future Improvements
 
-Potential enhancements to consider:
-- Add more image manipulation options (brightness, contrast, etc.)
-- Implement zoom functionality
-- Add ability to save modified images
-- Create a more sophisticated UI with menus and shortcuts
+This project can be enhanced with:
+- **More image editing options** (brightness, contrast adjustments, filters, etc.).
+- **Zoom and pan functionality** for better image exploration.
+- **Save feature** to export modified images.
+- **A more refined user interface** with menus and keyboard shortcuts.
+
+---
 
 ## License
 
-*This project is licensed under the MIT license - see the LICENSE file for details.*
+This project is licensed under the **MIT License**. See the `LICENSE` file for details.
+
+---
 
 ## Acknowledgements
-This project was developed as part of the **PROJ201 Undergraduate Project Course** at **Sabancı University**. The implementation follows the requirements specified in the homework assignment.
+
+Developed as part of the **PROJ201 Undergraduate Project Course** at **Sabancı University**.
