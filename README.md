@@ -1,4 +1,12 @@
-# Image Viewer & Inverter
+<h1 align="center">Image Viewer & Inverter</h1>
+
+<div align="center">
+   
+![Language](https://img.shields.io/badge/Python-red?style=for-the-badge)
+![Status](https://img.shields.io/badge/status-completed-green?style=for-the-badge)
+![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)
+
+</div>
 
 A simple desktop application built with PyQt5 that allows users to view and invert images.
 
@@ -8,10 +16,6 @@ A simple desktop application built with PyQt5 that allows users to view and inve
 - View images at a scaled size while maintaining aspect ratio
 - Invert image colors with a single click
 - Toggle between original and inverted views
-
-## Screenshot
-
-*[Add a screenshot of your application here]*
 
 ## Requirements
 
@@ -45,7 +49,7 @@ python image_viewer.py
 
 This project was developed in two phases:
 1. Initial implementation of a basic image viewer (image_viewer.py) to test image loading functionality.
-2. Extended implementation (in paste.txt) to add image inversion capabilities.
+2. Extended implementation (image_reverse.py) to add image inversion capabilities.
 
 ## How It Works
 
