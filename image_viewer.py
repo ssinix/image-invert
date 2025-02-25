@@ -33,7 +33,7 @@ def main():
     app = QApplication(sys.argv)
 
     # Replace 'path/to/your/image.jpg' with the actual path to your image
-    viewer = ImageViewer('/Users/azra/Downloads/_.jpeg')
+    viewer = ImageViewer('path/to/your/image.jpg')
     viewer.show()
 
     sys.exit(app.exec_())

@@ -47,6 +47,7 @@ class ImageViewer(QWidget):
         # Create a label to display the image
         self.image_label = QLabel(self)
         self.image_label.setAlignment(Qt.AlignCenter)
+        self.image_label.setMinimumSize(400, 300)  # Set minimum size for the label
 
         # Add layouts and label to main layout
         main_layout.addLayout(button_layout)
@@ -57,6 +58,33 @@ class ImageViewer(QWidget):
 
         # Set initial window size
         self.resize(600, 500)
+
+    def resizeEvent(self, event):
+        """Handle window resize events"""
+        super().resizeEvent(event)
+        # Update the image when window is resized
+        self.update_display()
+
+    def update_display(self):
+        """Update the displayed image based on current window size"""
+        if self.original_pixmap:
+            # Determine which pixmap to use (original or inverted)
+            source_pixmap = self.inverted_pixmap if self.is_inverted and self.inverted_pixmap else self.original_pixmap
+
+            # Get available size (accounting for layout margins)
+            available_width = self.image_label.width() - 10  # Subtract some margin
+            available_height = self.image_label.height() - 10  # Subtract some margin
+
+            # Scale the image to fit the available space while maintaining aspect ratio
+            self.current_pixmap = source_pixmap.scaled(
+                available_width,
+                available_height,
+                Qt.KeepAspectRatio,
+                Qt.SmoothTransformation
+            )
+
+            # Set the scaled image to the label
+            self.image_label.setPixmap(self.current_pixmap)
 
     def open_image(self):
         # Open file dialog to choose an image
@@ -72,22 +100,15 @@ class ImageViewer(QWidget):
             # Load the image
             self.original_pixmap = QPixmap(file_name)
 
-            # Scale the image to fit the window while maintaining aspect ratio
-            self.current_pixmap = self.original_pixmap.scaled(
-                580, 400,  # Slightly smaller than window to leave room for buttons
-                Qt.KeepAspectRatio,
-                Qt.SmoothTransformation
-            )
-
-            # Set the scaled image to the label
-            self.image_label.setPixmap(self.current_pixmap)
-
             # Enable the invert button
             self.invert_button.setEnabled(True)
 
             # Reset inversion state
             self.is_inverted = False
             self.inverted_pixmap = None
+
+            # Update the display with the new image
+            self.update_display()
 
             # Optionally, set window title to show filename
             self.setWindowTitle(f'Image Viewer - {file_name.split("/")[-1]}')
@@ -97,50 +118,34 @@ class ImageViewer(QWidget):
         if self.original_pixmap is None:
             return
 
-        if self.is_inverted:
-            # If currently inverted, switch back to original
-            self.current_pixmap = self.original_pixmap.scaled(
-                580, 400,
-                Qt.KeepAspectRatio,
-                Qt.SmoothTransformation
-            )
-            self.image_label.setPixmap(self.current_pixmap)
-            self.is_inverted = False
-        else:
-            # If not inverted, create the inverted image
-            if self.inverted_pixmap is None:
-                # Convert pixmap to QImage for pixel-level manipulation
-                image = self.original_pixmap.toImage()
+        # Toggle the inversion state
+        self.is_inverted = not self.is_inverted
 
-                # Invert the image
-                for x in range(image.width()):
-                    for y in range(image.height()):
-                        # Get the pixel color
-                        pixel_color = QColor(image.pixel(x, y))
+        if self.is_inverted and self.inverted_pixmap is None:
+            # Convert pixmap to QImage for pixel-level manipulation
+            image = self.original_pixmap.toImage()
 
-                        # Invert the RGB values
-                        inverted_color = QColor(
-                            255 - pixel_color.red(),
-                            255 - pixel_color.green(),
-                            255 - pixel_color.blue()
-                        )
+            # Invert the image
+            for x in range(image.width()):
+                for y in range(image.height()):
+                    # Get the pixel color
+                    pixel_color = QColor(image.pixel(x, y))
 
-                        # Set the inverted pixel
-                        image.setPixel(x, y, inverted_color.rgb())
+                    # Invert the RGB values
+                    inverted_color = QColor(
+                        255 - pixel_color.red(),
+                        255 - pixel_color.green(),
+                        255 - pixel_color.blue()
+                    )
 
-                # Convert back to pixmap and cache the inverted version
-                self.inverted_pixmap = QPixmap.fromImage(image)
+                    # Set the inverted pixel
+                    image.setPixel(x, y, inverted_color.rgb())
 
-            # Scale the inverted image
-            self.current_pixmap = self.inverted_pixmap.scaled(
-                580, 400,
-                Qt.KeepAspectRatio,
-                Qt.SmoothTransformation
-            )
+            # Convert back to pixmap and cache the inverted version
+            self.inverted_pixmap = QPixmap.fromImage(image)
 
-            # Display the inverted image
-            self.image_label.setPixmap(self.current_pixmap)
-            self.is_inverted = True
+        # Update the display
+        self.update_display()
 
 
 def main():
