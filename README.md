@@ -9,8 +9,8 @@
 </div>
 
 <div align="center">
-    <img src="./demo1.png" alt="Before Inversion" width="500">
-    <img src="./demo2.png" alt="After Inversion" width="500">
+    <img src="./demo1.png" alt="Before Inversion" width="300">
+    <img src="./demo2.png" alt="After Inversion" width="300">
 </div>
 
 A simple and interactive desktop application built with **PyQt5** that allows users to **view** and **invert** images with a single click.
